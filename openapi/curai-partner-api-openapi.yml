@@ -1,0 +1,308 @@
+openapi: 3.1.0
+info:
+  title: Curai Partner API
+  version: 1.81.1
+servers:
+- url: /partner
+tags:
+- name: Partner
+paths:
+  /register-patient:
+    post:
+      tags:
+      - Partner
+      summary: Register Patient
+      description: Registers a patient with Curai Health and returns an access token.
+      operationId: Register_Patient_register_patient_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterPatientInput'
+        required: true
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegisterPatientOutput'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /end-service:
+    post:
+      tags:
+      - Partner
+      summary: End Service
+      operationId: End_Service_end_service_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EndServiceInput'
+        required: true
+      responses:
+        '204':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+components:
+  schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    RegisterPatientInput:
+      properties:
+        patient:
+          allOf:
+          - $ref: '#/components/schemas/IncomingPatient'
+          title: Patient
+          description: The data for the patient who is seeking care.
+        primary_account_holder_unique_id:
+          type: string
+          title: Primary Account Holder Unique Id
+          description: A unique identifier for the patient.If the patient seeking care is a pediatric patient or a dependent, this id refers to the patient's sponsor, legal guardian, or policy holder. Otherwise, this id should match the unique_id provided in the patient object.
+          examples:
+          - '897655'
+        metadata:
+          type: object
+          title: Metadata
+          description: Any additional metadata that is specific to your organization and patients. Please reach out to support if you have any questions.
+          examples:
+          - conversation_id: abc1234
+            employer_name: Organization Name
+      type: object
+      required:
+      - patient
+      - primary_account_holder_unique_id
+      title: RegisterPatientInput
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    RegisterPatientOutput:
+      properties:
+        access_token:
+          type: string
+          title: Access Token
+          description: Authentication token to bypass the need to login to our app.
+          example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiMTIiLCJ1c2VyX3R5cGUiOjEsInV1aWQiOiJkMWEwNWY3MC1lYWI0LTQzZTItOThmNy0wOTllYTUyYmRmNDMiLCJleHAiOjE3MDEzNjMyOTksIm5iZiI6MTY2OTgyNzI5OSwiaWF0IjoxNjY5ODI3Mjk5LCJpc3MiOiJodHRwczovL2N1cmFpaGVhbHRoLmNvbSIsImF1ZCI6Imh0dHBzOi8vY3VyYWloZWFsdGguY29tIiwiZGV2aWNlX3R5cGUiOjgsInBhdGllbnRfaWRzIjpbIjQiXX0.Purn92-w6XT2UTlf3wLeUD-lAdBS4yK2o8_nLoqXL2Y
+        refresh_token:
+          type: string
+          title: Refresh Token
+          description: Token used to obtain a new access token when the current one expires.
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiODAiLCJ1dWlkIjoiMjA0ZTdjNmUtYzZiNS00MjAwLWFlNDUtMjBhOWY3N2ZiYmNlIiwiZXhwIjoxNzIyNDU5MTE0LCJhdWQiOiJodHRwczovL2N1cmFpaGVhbHRoLmNvbSJ9.UOcCFbNrWEJpPehTW3YrUtuvgcTeOe_E-NEgMFBYoh4
+        auth_url:
+          type: string
+          title: Auth Url
+          description: An authentication url that can be used to login directly to our app.
+          examples:
+          - https://chat.curaihealth.com/onboarding/affiliated-welcome?access_token={access_token}&refresh_token={refresh_token}
+      type: object
+      required:
+      - access_token
+      - refresh_token
+      title: RegisterPatientOutput
+    EndServiceInput:
+      properties:
+        unique_id:
+          type: string
+          title: Unique Id
+          description: A unique identifier for the patient.
+          example: '897655'
+        end_date:
+          type: string
+          format: date-time
+          title: End Date
+          description: Datetime with timezone the service will end on.
+          example: '2024-04-25T00:00:00+00:00'
+      type: object
+      required:
+      - unique_id
+      - end_date
+      title: EndServiceInput
+    Address:
+      properties:
+        street:
+          type: string
+          title: Street
+          description: The street address. Also referred to as address line 1 and line 2. Please include the name of the street, the number of the building, and any other identifying information such as an apartment or suite number.
+          examples:
+          - 4500 S Pleasant Valley Rd, Suite 201
+        city:
+          type: string
+          title: City
+          description: The name of the patient's city.
+          example: Austin
+        state:
+          type: string
+          enum:
+          - AK
+          - AL
+          - AR
+          - AZ
+          - CA
+          - CO
+          - CT
+          - DC
+          - DE
+          - FL
+          - GA
+          - HI
+          - IA
+          - ID
+          - IL
+          - IN
+          - KS
+          - KY
+          - LA
+          - MA
+          - MD
+          - ME
+          - MI
+          - MN
+          - MO
+          - MS
+          - MT
+          - NC
+          - ND
+          - NE
+          - NH
+          - NJ
+          - NM
+          - NV
+          - NY
+          - OH
+          - OK
+          - OR
+          - PA
+          - RI
+          - SC
+          - SD
+          - TN
+          - TX
+          - UT
+          - VA
+          - VT
+          - WA
+          - WI
+          - WV
+          - WY
+          title: State
+          example: TX
+        zip_code:
+          type: string
+          minLength: 5
+          title: Zip Code
+          description: The patient's zip code. We only serve patients residing in the United States.
+          examples:
+          - '78744'
+      type: object
+      required:
+      - street
+      - city
+      - state
+      - zip_code
+      title: Address
+    IncomingPatient:
+      properties:
+        unique_id:
+          type: string
+          title: Unique Id
+          description: A unique identifier for the patient.
+          example: '897655'
+        first_name:
+          type: string
+          title: First Name
+          description: The patient's first name. This will be used as the patient's legal name.
+          examples:
+          - Jane
+        last_name:
+          type: string
+          title: Last Name
+          description: The patient's last name.
+          example: Doe
+        date_of_birth:
+          type: string
+          format: date
+          title: Date Of Birth
+          description: The patient's birthday.
+          example: '1990-01-01'
+        sex:
+          type: string
+          enum:
+          - male
+          - female
+          - other
+          - unknown
+          title: Sex
+          description: The patient's biological sex. Gender and pronouns are not collected at the time of registration.
+          examples:
+          - female
+        permanent_address:
+          allOf:
+          - $ref: '#/components/schemas/Address'
+          title: Permanent Address
+          description: The patient's address. This will be used as the patient's permanent address.
+        email:
+          type: string
+          format: email
+          title: Email
+          description: The patient's email address. This email will be used for notifications and contacting the patient when needed.
+          examples:
+          - example@test.com
+        phone:
+          type: string
+          title: Phone
+          description: The patient's phone number. This number will be used for notifications and contacting the patient when needed.
+          examples:
+          - '5555555555'
+      type: object
+      required:
+      - unique_id
+      - first_name
+      - last_name
+      - date_of_birth
+      - sex
+      - permanent_address
+      title: IncomingPatient
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: X-Api-Key
