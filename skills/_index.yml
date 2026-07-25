@@ -1,0 +1,10 @@
+generated: '2026-07-18'
+method: generated
+source: openapi/curai-partner-openapi.json
+skills:
+- file: curai-register-patient.md
+  name: Register a Curai patient and launch the embedded experience
+  api: openapi/curai-partner-openapi.json
+  operations:
+  - Register_Patient_register_patient_post
+  - End_Service_end_service_post

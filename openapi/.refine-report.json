@@ -1,0 +1,14 @@
+{
+  "provider": "curai",
+  "sources": [
+    "curai-partner-api-openapi.yml"
+  ],
+  "outputs": [
+    "curai-partner-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

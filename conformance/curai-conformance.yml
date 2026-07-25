@@ -1,0 +1,34 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/curai-partner-openapi.json
+note: >-
+  Derived from the Partner API spec and observed surface. Curai publishes no
+  public compliance/trust page (trust.curaihealth.com resolves to an
+  unconfigured ELB default backend), so no Compliance pointer is emitted despite
+  the healthcare (implied HIPAA) domain. Standards below reflect only what the
+  spec evidences.
+standards:
+- id: openapi-3.1
+  conforms: true
+  evidence: spec declares openapi 3.1.0
+- id: oauth2
+  conforms: false
+  evidence: security scheme is apiKey (X-Api-Key header), not oauth2
+- id: openid-connect
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: >-
+    422 responses use FastAPI HTTPValidationError (detail[] of loc/msg/type),
+    not application/problem+json
+- id: fhir-r4
+  conforms: false
+  evidence: >-
+    Partner API models a proprietary patient-registration payload, not FHIR
+    resources (Curai's GitHub org does use FHIR libraries internally)
+- id: pagination
+  conforms: false
+  evidence: no list/collection operations
+- id: idempotency
+  conforms: false
+  evidence: no idempotency-key header documented in spec

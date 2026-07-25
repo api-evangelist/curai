@@ -1,0 +1,26 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/curai-partner-openapi.json
+format: custom
+envelope:
+  schema: HTTPValidationError
+  shape: '{ "detail": [ { "loc": [...], "msg": "...", "type": "..." } ] }'
+  note: >-
+    FastAPI-style validation error envelope (not RFC 9457
+    application/problem+json). Each item locates the offending field (loc),
+    a human message (msg), and a machine error type.
+problems:
+- status: 422
+  title: Validation Error
+  schema: HTTPValidationError
+  media_type: application/json
+  description: >-
+    Request body failed validation (missing/invalid patient fields, unsupported
+    state enum, malformed email/date, etc.).
+  source_operations:
+  - openapi/curai-partner-openapi.json#Register_Patient_register_patient_post
+  - openapi/curai-partner-openapi.json#End_Service_end_service_post
+note: >-
+  Only 2xx and 422 are declared in the spec. Auth failures on the X-Api-Key
+  header (401/403) are not modeled in the OpenAPI; treat a missing/invalid API
+  key as an authentication error out of band.

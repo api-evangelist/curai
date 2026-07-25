@@ -1,0 +1,42 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/curai-partner-openapi.json
+entities:
+- name: RegisterPatientInput
+  role: request
+  fields: [patient, primary_account_holder_unique_id, metadata]
+- name: IncomingPatient
+  role: object
+  key: unique_id
+  fields: [unique_id, first_name, last_name, date_of_birth, sex, permanent_address, email, phone]
+- name: Address
+  role: value-object
+  fields: [street, city, state, zip_code]
+- name: RegisterPatientOutput
+  role: response
+  fields: [access_token, refresh_token, auth_url]
+- name: EndServiceInput
+  role: request
+  key: unique_id
+  fields: [unique_id, end_date]
+- name: HTTPValidationError
+  role: error
+  fields: [detail]
+relationships:
+- from: RegisterPatientInput
+  to: IncomingPatient
+  kind: has_one
+  via: patient
+- from: IncomingPatient
+  to: Address
+  kind: has_one
+  via: permanent_address
+- from: EndServiceInput
+  to: IncomingPatient
+  kind: belongs_to
+  via: unique_id
+notes: >-
+  Patients are keyed by a partner-supplied unique_id. Dependents/pediatric
+  patients reference a sponsor via primary_account_holder_unique_id. The
+  register operation returns JWT access/refresh tokens (iss/aud
+  https://curaihealth.com) that launch the embedded experience.

@@ -1,0 +1,25 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Curai Partner API
+  version: 1.0.0
+extends: openapi/curai-partner-openapi.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: curai
+    x-apievangelist-industry: healthcare
+    x-apievangelist-auth: api-key-header
+    x-production-server: https://gateway.curaihealth.com/partner
+    x-staging-server: https://gateway.staging.curaihealth.com/partner
+- target: $.servers
+  update:
+  - url: https://gateway.curaihealth.com/partner
+    description: Production
+  - url: https://gateway.staging.curaihealth.com/partner
+    description: Staging
+- target: $.paths['/register-patient'].post
+  update:
+    x-apievangelist-flow: onboard-and-embed
+    x-apievangelist-note: >-
+      Returns an access_token and refresh_token used to initialize the curai-js
+      Web SDK (Curai.startChatSession) or the WebView embed URL.

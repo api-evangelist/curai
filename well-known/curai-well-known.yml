@@ -1,0 +1,23 @@
+generated: '2026-07-18'
+method: searched
+source: live probes of /.well-known/ on Curai hosts
+hosts:
+- host: https://gateway.curaihealth.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+- host: https://www.curaihealth.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+note: >-
+  No /.well-known/ discovery documents are published on the API gateway or the
+  marketing host. Absence recorded as valid data. The Partner API uses X-Api-Key
+  header auth (no OAuth/OIDC), consistent with the absence of OIDC/OAuth server
+  metadata.

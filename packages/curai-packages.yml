@@ -1,0 +1,22 @@
+generated: '2026-07-18'
+method: searched
+source: https://www.curaihealth.com/sdk-quickstart-guide
+packages:
+- language: javascript
+  registry: npm
+  name: curai-js
+  url: https://www.npmjs.com/package/curai-js
+  install: npm install curai-js
+  cdn: https://unpkg.com/curai-js
+  official: true
+  description: >-
+    Curai Web SDK. Embeds the Curai patient chat/telemedicine experience into a
+    partner web or mobile application. Loaded via script tag or npm, then
+    initialized with Curai.startChatSession(clientId, accessToken). The access
+    token is minted by the Partner API register-patient operation.
+  note: >-
+    Documented on the Curai SDK Quickstart Guide. The npm package name is
+    registered (registry.npmjs.org/curai-js returns the package) but no public
+    version is currently listed on the registry / unpkg; distribution appears to
+    be gated to partners. Recorded as documented first-party SDK, not verified as
+    an openly installable public release.

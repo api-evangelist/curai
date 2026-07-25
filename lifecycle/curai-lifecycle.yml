@@ -1,0 +1,21 @@
+generated: '2026-07-18'
+method: searched
+source: https://gateway.curaihealth.com/partner/openapi.json
+versioning:
+  scheme: semver-info-version
+  current: 1.81.1
+  in_path: false
+  note: >-
+    Version is carried in the OpenAPI info.version (1.81.1). No version segment
+    in the URL path (server is /partner). No documented public versioning or
+    deprecation policy.
+deprecation:
+  policy_url: null
+  sunset_header: unknown
+status_page: null
+status_page_note: >-
+  status.curaihealth.com resolves to an unconfigured ELB default backend, not a
+  real status/uptime page. No StatusPage pointer emitted.
+sla:
+  url: null
+deprecated_operations: []

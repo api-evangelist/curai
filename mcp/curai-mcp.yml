@@ -1,0 +1,21 @@
+generated: '2026-07-18'
+method: derived
+status: candidate
+source: openapi/curai-partner-openapi.json
+note: >-
+  No official hosted/remote Curai MCP server was found (docs, npm
+  @modelcontextprotocol, MCP registries). Candidate tool list derived one-to-one
+  from the Partner API operations. Auth is an X-Api-Key header; a real server
+  would need the partner API key injected as a secret.
+server:
+  name: curai-partner
+  transport: http
+tools:
+- name: register_patient
+  description: >-
+    Register a patient with Curai Health and return an access token used to
+    launch the embedded Curai patient experience.
+  source_operation: openapi/curai-partner-openapi.json#Register_Patient_register_patient_post
+- name: end_service
+  description: End a registered patient's Curai service on a given date.
+  source_operation: openapi/curai-partner-openapi.json#End_Service_end_service_post

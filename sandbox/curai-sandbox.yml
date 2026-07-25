@@ -1,0 +1,24 @@
+generated: '2026-07-18'
+method: searched
+source: https://www.curaihealth.com/sdk-quickstart-guide
+summary: >-
+  Curai separates staging from production at the gateway host level, and the Web
+  SDK exposes a testMode flag that targets the staging environment. No test card
+  or magic-identifier fixtures apply (this is not a payments API); partners test
+  by registering patients against the staging gateway with a staging API key.
+environments:
+- name: staging
+  base_url: https://gateway.staging.curaihealth.com/partner
+  sdk_flag: testMode=true
+  note: Register test patients here; access tokens launch the staging experience.
+- name: production
+  base_url: https://gateway.curaihealth.com/partner
+  sdk_flag: testMode=false (default)
+auth:
+  header: X-Api-Key
+  note: Partners receive separate staging and production API keys from Curai support.
+test_values:
+  published: false
+  note: >-
+    Curai does not publish fixed magic test identifiers; test data is the
+    partner's own patient records submitted against staging.

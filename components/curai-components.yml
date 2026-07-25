@@ -1,0 +1,28 @@
+generated: '2026-07-18'
+method: searched
+source: https://www.curaihealth.com/sdk-quickstart-guide
+summary: >-
+  Curai ships a single embeddable client-side surface, the Curai Web SDK, which
+  drops the hosted Curai patient experience (async and live messaging, audio/video
+  visits, intake) into a partner web or mobile app. It is an embedded/hosted UI
+  surface, distinct from a server-side SDK.
+families:
+- name: Web SDK
+  kind: embedded-experience
+  loader:
+    script: https://unpkg.com/curai-js
+    npm: curai-js
+  init: Curai.startChatSession
+  init_params:
+  - clientId
+  - accessToken
+  - parentElement
+  - testMode
+  events:
+  - Curai.onError
+  mobile_embed:
+    method: WebView / iframe
+    url: https://customer.curaihealth.com?clientId={clientId}&accessToken={accessToken}
+  depends_on:
+    api: openapi/curai-partner-openapi.json
+    operation: Register_Patient_register_patient_post

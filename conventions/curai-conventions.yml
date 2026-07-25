@@ -1,0 +1,32 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/curai-partner-openapi.json
+authentication:
+  style: api-key-header
+  header: X-Api-Key
+  ref: authentication/curai-authentication.yml
+idempotency:
+  supported: false
+  note: No idempotency-key header is documented in the spec.
+pagination:
+  supported: false
+  note: No list/collection operations; both operations are single POSTs.
+metadata:
+  supported: true
+  field: metadata
+  note: >-
+    RegisterPatientInput accepts a free-form metadata object for
+    partner-specific fields (e.g. conversation_id, employer_name).
+field_expansion:
+  supported: false
+versioning:
+  style: info-version
+  current: 1.81.1
+  ref: lifecycle/curai-lifecycle.yml
+error_envelope:
+  shape: FastAPI HTTPValidationError (detail[] of loc/msg/type)
+  format: custom
+  ref: errors/curai-problem-types.yml
+rate_limiting:
+  signaling: undocumented
+media_type: application/json

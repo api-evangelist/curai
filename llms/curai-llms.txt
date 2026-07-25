@@ -1,0 +1,35 @@
+# Curai Health
+
+> Curai Health is a virtual-first primary care company delivering 24/7 text-based telemedicine across all 50 U.S. states. For organizations, health systems, and benefits administrators, Curai exposes a small, key-authenticated Partner API and an embeddable Web SDK (curai-js) to register patients and drop the Curai patient experience into partner web and mobile apps.
+
+## APIs
+
+- [Curai Partner API docs (Swagger UI)](https://gateway.curaihealth.com/partner/docs): Register a patient and end a service; X-Api-Key header auth.
+- [Partner API OpenAPI 3.1](https://gateway.curaihealth.com/partner/openapi.json): Machine-readable spec, version 1.81.1.
+
+## Specs
+
+- [openapi/curai-partner-openapi.json](openapi/curai-partner-openapi.json): Harvested OpenAPI 3.1 spec (register-patient, end-service).
+- [overlays/curai-partner-overlay.yaml](overlays/curai-partner-overlay.yaml): API Evangelist enhancements (production/staging servers, flow annotations).
+
+## Docs
+
+- [SDK Quickstart Guide](https://www.curaihealth.com/sdk-quickstart-guide): Web SDK install, register-patient flow, embedding.
+- [For Health Systems / Organizations](https://www.curaihealth.com/health-systems): Integration via APIs, HIE, and webhooks.
+- [Terms of Use & Privacy Policy](https://www.curaihealth.com/terms-of-use)
+
+## Artifacts
+
+- [authentication/curai-authentication.yml](authentication/curai-authentication.yml): API-key (X-Api-Key header) auth profile.
+- [conventions/curai-conventions.yml](conventions/curai-conventions.yml): Cross-cutting semantics (auth, metadata, error envelope).
+- [errors/curai-problem-types.yml](errors/curai-problem-types.yml): Validation error envelope (FastAPI HTTPValidationError).
+- [data-model/curai-data-model.yml](data-model/curai-data-model.yml): Patient / Address / token entity graph.
+- [sandbox/curai-sandbox.yml](sandbox/curai-sandbox.yml): Staging vs production gateways and testMode.
+- [skills/curai-register-patient.md](skills/curai-register-patient.md): Agent skill for the register-and-embed flow.
+- [mcp/curai-mcp.yml](mcp/curai-mcp.yml): Candidate MCP tool list derived from the Partner API.
+
+## Company
+
+- [Website](https://www.curaihealth.com/)
+- [GitHub organization](https://github.com/curai)
+- [Careers](https://www.curaihealth.com/careers)

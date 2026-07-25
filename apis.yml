@@ -1,9 +1,31 @@
 aid: curai
 name: Curai
-description: Curai is a company surfaced as a portfolio company of general-catalyst, khosla-ventures and
-  added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment
-  pipeline.
+description: >-
+  Curai Health is a virtual-first primary care company offering 24/7 text-based
+  telemedicine to patients across all 50 U.S. states, connecting them with
+  board-certified clinicians for urgent care, chronic disease management,
+  wellness, and preventive screenings, with orders for labs and prescriptions
+  and referrals to specialists. For organizations, health systems, TPAs, and
+  benefits administrators, Curai exposes a Partner API and an embeddable Web SDK
+  (curai-js) that let partners register patients and drop the Curai patient
+  experience into their own web and mobile apps, plus integration via
+  standards-based APIs, Health Information Exchanges (HIE), and webhooks. The
+  Partner API is a small, key-authenticated surface used to onboard patients and
+  obtain session access tokens for the embedded experience.
 url: https://raw.githubusercontent.com/api-evangelist/curai/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://cdn.prod.website-files.com/619acca858666ac6759d6e31/61d79c66ae46600b755a13be_logo_webclip.png
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
@@ -13,10 +35,31 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
 tags:
 - Company
-apis: []
+- Health
+- Healthcare
+- Telemedicine
+- Telehealth
+- Primary Care
+- Digital Health
+- Patient Engagement
+- Partner API
+- SDK
+apis:
+- aid: curai:curai-partner-api
+  name: Curai Partner API
+  description: The Partner API from Curai — 2 operation(s) for partner.
+  humanURL: https://gateway.curaihealth.com/partner/docs
+  baseURL: https://gateway.curaihealth.com/partner
+  tags:
+  - Partner
+  properties:
+  - type: OpenAPI
+    url: openapi/curai-partner-api-openapi.yml
+  - type: APIReference
+    url: https://gateway.curaihealth.com/partner/docs
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -24,4 +67,51 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: http://curai.com/
+  url: https://www.curaihealth.com/
+- type: DeveloperPortal
+  url: https://gateway.curaihealth.com/partner/docs
+- type: Documentation
+  url: https://www.curaihealth.com/sdk-quickstart-guide
+- type: GettingStarted
+  url: https://www.curaihealth.com/sdk-quickstart-guide
+- type: GitHubOrganization
+  url: https://github.com/curai
+- type: TermsOfService
+  url: https://www.curaihealth.com/terms-of-use
+- type: Packages
+  url: packages/curai-packages.yml
+- type: SDKs
+  url: packages/curai-packages.yml
+- type: Components
+  url: components/curai-components.yml
+- type: WellKnown
+  url: well-known/curai-well-known.yml
+- type: MCPServer
+  url: mcp/curai-mcp.yml
+- type: LLMsTxt
+  url: llms/curai-llms.txt
+- type: Conformance
+  url: conformance/curai-conformance.yml
+- type: ErrorCatalog
+  url: errors/curai-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/curai-lifecycle.yml
+- type: Authentication
+  url: authentication/curai-authentication.yml
+- type: DomainSecurity
+  url: security/curai-domain-security.yml
+- type: Sandbox
+  url: sandbox/curai-sandbox.yml
+- type: Conventions
+  url: conventions/curai-conventions.yml
+- type: DataModel
+  url: data-model/curai-data-model.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: AgenticAccess
+  url: agentic-access/curai-agentic-access.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence
