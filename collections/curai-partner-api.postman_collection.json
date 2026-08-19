@@ -1,0 +1,357 @@
+{
+  "item": [
+    {
+      "id": "8d81f2ef-cdb4-4b53-80e3-89c30368a418",
+      "name": "Partner",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "af822625-afe6-474b-abb4-986edf10ba24",
+          "name": "Register Patient",
+          "request": {
+            "name": "Register Patient",
+            "description": {
+              "content": "Registers a patient with Curai Health and returns an access token.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "register-patient"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Api-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patient\": {\n    \"unique_id\": \"<string>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"date_of_birth\": \"<date>\",\n    \"sex\": \"<string>\",\n    \"permanent_address\": {\n      \"street\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"zip_code\": \"<string>\"\n    },\n    \"email\": \"<email>\",\n    \"phone\": \"<string>\"\n  },\n  \"primary_account_holder_unique_id\": \"<string>\",\n  \"metadata\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6ed8a359-2388-43e2-8897-2c054f2c086d",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "register-patient"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"patient\": {\n    \"unique_id\": \"897655\",\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"date_of_birth\": \"1990-01-01\",\n    \"sex\": \"female\",\n    \"permanent_address\": {\n      \"street\": \"4500 S Pleasant Valley Rd, Suite 201\",\n      \"city\": \"Austin\",\n      \"state\": \"TX\",\n      \"zip_code\": \"78744\"\n    },\n    \"email\": \"example@test.com\",\n    \"phone\": \"5555555555\"\n  },\n  \"primary_account_holder_unique_id\": \"897655\",\n  \"metadata\": {\n    \"conversation_id\": \"abc1234\",\n    \"employer_name\": \"Organization Name\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiMTIiLCJ1c2VyX3R5cGUiOjEsInV1aWQiOiJkMWEwNWY3MC1lYWI0LTQzZTItOThmNy0wOTllYTUyYmRmNDMiLCJleHAiOjE3MDEzNjMyOTksIm5iZiI6MTY2OTgyNzI5OSwiaWF0IjoxNjY5ODI3Mjk5LCJpc3MiOiJodHRwczovL2N1cmFpaGVhbHRoLmNvbSIsImF1ZCI6Imh0dHBzOi8vY3VyYWloZWFsdGguY29tIiwiZGV2aWNlX3R5cGUiOjgsInBhdGllbnRfaWRzIjpbIjQiXX0.Purn92-w6XT2UTlf3wLeUD-lAdBS4yK2o8_nLoqXL2Y\",\n  \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiODAiLCJ1dWlkIjoiMjA0ZTdjNmUtYzZiNS00MjAwLWFlNDUtMjBhOWY3N2ZiYmNlIiwiZXhwIjoxNzIyNDU5MTE0LCJhdWQiOiJodHRwczovL2N1cmFpaGVhbHRoLmNvbSJ9.UOcCFbNrWEJpPehTW3YrUtuvgcTeOe_E-NEgMFBYoh4\",\n  \"auth_url\": \"https://chat.curaihealth.com/onboarding/affiliated-welcome?access_token={access_token}&refresh_token={refresh_token}\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aedb7c97-48c2-4342-b1cd-29713e3a8a6e",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "register-patient"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"patient\": {\n    \"unique_id\": \"897655\",\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Doe\",\n    \"date_of_birth\": \"1990-01-01\",\n    \"sex\": \"female\",\n    \"permanent_address\": {\n      \"street\": \"4500 S Pleasant Valley Rd, Suite 201\",\n      \"city\": \"Austin\",\n      \"state\": \"TX\",\n      \"zip_code\": \"78744\"\n    },\n    \"email\": \"example@test.com\",\n    \"phone\": \"5555555555\"\n  },\n  \"primary_account_holder_unique_id\": \"897655\",\n  \"metadata\": {\n    \"conversation_id\": \"abc1234\",\n    \"employer_name\": \"Organization Name\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "835a1881-2741-4a0b-8b9e-b25fd9205cd3",
+          "name": "End Service",
+          "request": {
+            "name": "End Service",
+            "description": {},
+            "url": {
+              "path": [
+                "end-service"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Api-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"unique_id\": \"<string>\",\n  \"end_date\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5c3b8093-b209-48e3-8cb9-9b210d3fa4c4",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "end-service"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"unique_id\": \"897655\",\n  \"end_date\": \"2024-04-25T00:00:00+00:00\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e96c67b7-b5a9-4846-a3e3-6252832301bc",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "end-service"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"unique_id\": \"897655\",\n  \"end_date\": \"2024-04-25T00:00:00+00:00\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/partner",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "282db510-57cf-4ebd-9518-54d2af6f6844",
+    "name": "Curai Partner API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}
