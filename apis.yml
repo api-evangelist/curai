@@ -78,6 +78,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/curai-capability-edges.yml
+  name: Curai Business Capability Map
 - type: Overlay
   url: overlays/curai-partner-overlay.yaml
 - type: Website
