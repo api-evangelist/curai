@@ -18,9 +18,9 @@ edges:
   capability_id: BC-2800.20
   capability_id_l1: BC-2800
   capability_name: Patient Registration Management
-  confidence: 0.78
-  evidence: POST /register-patient "Register Patient"; schemas RegisterPatientInput, IncomingPatient,
-    Address; POST /end-service "End Service"
-  reason: The partner surface registers patients (demographics/address) into the virtual care service
-    and terminates their service — patient registration/intake. Some ambiguity as 'end-service' also touches
-    enrolment lifecycle, hence not 0.9.
+  confidence: 0.8
+  evidence: 'POST /register-patient Register Patient ... schemas: RegisterPatientInput, IncomingPatient,
+    RegisterPatientOutput, EndServiceInput'
+  reason: Partner-facing operations register a patient (with demographics/address) into Curai's virtual
+    primary care service and end the service — patient intake/registration for an encounter, i.e. patient
+    access. Some ambiguity remains about whether it is registration or enrolment/eligibility, hence 0.8.
