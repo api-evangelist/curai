@@ -54,6 +54,16 @@ tags:
 - Company
 - Health
 - Healthcare
+- Telehealth
+- Primary Care
+- Digital Health
+- Patient Engagement
+- Partner API
+- SDK
+tags_raw:
+- Company
+- Health
+- Healthcare
 - Telemedicine
 - Telehealth
 - Primary Care
@@ -68,6 +78,8 @@ apis:
   humanURL: https://gateway.curaihealth.com/partner/docs
   baseURL: https://gateway.curaihealth.com/partner
   tags:
+  - Partners
+  tags_raw:
   - Partner
   properties:
   - type: OpenAPI
