@@ -60,24 +60,89 @@ paths:
       - APIKeyHeader: []
 components:
   schemas:
-    EndServiceInput:
+    Address:
       properties:
-        unique_id:
+        street:
           type: string
-          title: Unique Id
-          description: A unique identifier for the patient.
-          example: '897655'
-        end_date:
+          title: Street
+          description: The street address. Also referred to as address line 1 and line 2. Please include the name of the street, the number of the building, and any other identifying information such as an apartment or suite number.
+          examples:
+          - 4500 S Pleasant Valley Rd, Suite 201
+        city:
           type: string
-          format: date-time
-          title: End Date
-          description: Datetime with timezone the service will end on.
-          example: '2024-04-25T00:00:00+00:00'
+          title: City
+          description: The name of the patient's city.
+          example: Austin
+        state:
+          type: string
+          enum:
+          - AK
+          - AL
+          - AR
+          - AZ
+          - CA
+          - CO
+          - CT
+          - DC
+          - DE
+          - FL
+          - GA
+          - HI
+          - IA
+          - ID
+          - IL
+          - IN
+          - KS
+          - KY
+          - LA
+          - MA
+          - MD
+          - ME
+          - MI
+          - MN
+          - MO
+          - MS
+          - MT
+          - NC
+          - ND
+          - NE
+          - NH
+          - NJ
+          - NM
+          - NV
+          - NY
+          - OH
+          - OK
+          - OR
+          - PA
+          - RI
+          - SC
+          - SD
+          - TN
+          - TX
+          - UT
+          - VA
+          - VT
+          - WA
+          - WI
+          - WV
+          - WY
+          title: State
+          example: TX
+        zip_code:
+          type: string
+          minLength: 5
+          title: Zip Code
+          description: The patient's zip code. We only serve patients residing in the United States.
+          examples:
+          - '78744'
       type: object
       required:
-      - unique_id
-      - end_date
-      title: EndServiceInput
+      - street
+      - city
+      - state
+      - zip_code
+      title: Address
     RegisterPatientInput:
       properties:
         patient:
@@ -165,6 +230,45 @@ components:
       - sex
       - permanent_address
       title: IncomingPatient
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    EndServiceInput:
+      properties:
+        unique_id:
+          type: string
+          title: Unique Id
+          description: A unique identifier for the patient.
+          example: '897655'
+        end_date:
+          type: string
+          format: date-time
+          title: End Date
+          description: Datetime with timezone the service will end on.
+          example: '2024-04-25T00:00:00+00:00'
+      type: object
+      required:
+      - unique_id
+      - end_date
+      title: EndServiceInput
     RegisterPatientOutput:
       properties:
         access_token:
@@ -188,27 +292,6 @@ components:
       - access_token
       - refresh_token
       title: RegisterPatientOutput
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
     HTTPValidationError:
       properties:
         detail:
@@ -218,89 +301,6 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
-    Address:
-      properties:
-        street:
-          type: string
-          title: Street
-          description: The street address. Also referred to as address line 1 and line 2. Please include the name of the street, the number of the building, and any other identifying information such as an apartment or suite number.
-          examples:
-          - 4500 S Pleasant Valley Rd, Suite 201
-        city:
-          type: string
-          title: City
-          description: The name of the patient's city.
-          example: Austin
-        state:
-          type: string
-          enum:
-          - AK
-          - AL
-          - AR
-          - AZ
-          - CA
-          - CO
-          - CT
-          - DC
-          - DE
-          - FL
-          - GA
-          - HI
-          - IA
-          - ID
-          - IL
-          - IN
-          - KS
-          - KY
-          - LA
-          - MA
-          - MD
-          - ME
-          - MI
-          - MN
-          - MO
-          - MS
-          - MT
-          - NC
-          - ND
-          - NE
-          - NH
-          - NJ
-          - NM
-          - NV
-          - NY
-          - OH
-          - OK
-          - OR
-          - PA
-          - RI
-          - SC
-          - SD
-          - TN
-          - TX
-          - UT
-          - VA
-          - VT
-          - WA
-          - WI
-          - WV
-          - WY
-          title: State
-          example: TX
-        zip_code:
-          type: string
-          minLength: 5
-          title: Zip Code
-          description: The patient's zip code. We only serve patients residing in the United States.
-          examples:
-          - '78744'
-      type: object
-      required:
-      - street
-      - city
-      - state
-      - zip_code
-      title: Address
   securitySchemes:
     APIKeyHeader:
       type: apiKey
