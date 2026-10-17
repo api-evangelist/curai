@@ -60,6 +60,24 @@ paths:
       - APIKeyHeader: []
 components:
   schemas:
+    EndServiceInput:
+      properties:
+        unique_id:
+          type: string
+          title: Unique Id
+          description: A unique identifier for the patient.
+          example: '897655'
+        end_date:
+          type: string
+          format: date-time
+          title: End Date
+          description: Datetime with timezone the service will end on.
+          example: '2024-04-25T00:00:00+00:00'
+      type: object
+      required:
+      - unique_id
+      - end_date
+      title: EndServiceInput
     IncomingPatient:
       properties:
         unique_id:
@@ -122,47 +140,6 @@ components:
       - sex
       - permanent_address
       title: IncomingPatient
-    RegisterPatientOutput:
-      properties:
-        access_token:
-          type: string
-          title: Access Token
-          description: Authentication token to bypass the need to login to our app.
-          example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiMTIiLCJ1c2VyX3R5cGUiOjEsInV1aWQiOiJkMWEwNWY3MC1lYWI0LTQzZTItOThmNy0wOTllYTUyYmRmNDMiLCJleHAiOjE3MDEzNjMyOTksIm5iZiI6MTY2OTgyNzI5OSwiaWF0IjoxNjY5ODI3Mjk5LCJpc3MiOiJodHRwczovL2N1cmFpaGVhbHRoLmNvbSIsImF1ZCI6Imh0dHBzOi8vY3VyYWloZWFsdGguY29tIiwiZGV2aWNlX3R5cGUiOjgsInBhdGllbnRfaWRzIjpbIjQiXX0.Purn92-w6XT2UTlf3wLeUD-lAdBS4yK2o8_nLoqXL2Y
-        refresh_token:
-          type: string
-          title: Refresh Token
-          description: Token used to obtain a new access token when the current one expires.
-          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiODAiLCJ1dWlkIjoiMjA0ZTdjNmUtYzZiNS00MjAwLWFlNDUtMjBhOWY3N2ZiYmNlIiwiZXhwIjoxNzIyNDU5MTE0LCJhdWQiOiJodHRwczovL2N1cmFpaGVhbHRoLmNvbSJ9.UOcCFbNrWEJpPehTW3YrUtuvgcTeOe_E-NEgMFBYoh4
-        auth_url:
-          type: string
-          title: Auth Url
-          description: An authentication url that can be used to login directly to our app.
-          examples:
-          - https://chat.curaihealth.com/onboarding/affiliated-welcome?access_token={access_token}&refresh_token={refresh_token}
-      type: object
-      required:
-      - access_token
-      - refresh_token
-      title: RegisterPatientOutput
-    EndServiceInput:
-      properties:
-        unique_id:
-          type: string
-          title: Unique Id
-          description: A unique identifier for the patient.
-          example: '897655'
-        end_date:
-          type: string
-          format: date-time
-          title: End Date
-          description: Datetime with timezone the service will end on.
-          example: '2024-04-25T00:00:00+00:00'
-      type: object
-      required:
-      - unique_id
-      - end_date
-      title: EndServiceInput
     RegisterPatientInput:
       properties:
         patient:
@@ -301,6 +278,29 @@ components:
       - state
       - zip_code
       title: Address
+    RegisterPatientOutput:
+      properties:
+        access_token:
+          type: string
+          title: Access Token
+          description: Authentication token to bypass the need to login to our app.
+          example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiMTIiLCJ1c2VyX3R5cGUiOjEsInV1aWQiOiJkMWEwNWY3MC1lYWI0LTQzZTItOThmNy0wOTllYTUyYmRmNDMiLCJleHAiOjE3MDEzNjMyOTksIm5iZiI6MTY2OTgyNzI5OSwiaWF0IjoxNjY5ODI3Mjk5LCJpc3MiOiJodHRwczovL2N1cmFpaGVhbHRoLmNvbSIsImF1ZCI6Imh0dHBzOi8vY3VyYWloZWFsdGguY29tIiwiZGV2aWNlX3R5cGUiOjgsInBhdGllbnRfaWRzIjpbIjQiXX0.Purn92-w6XT2UTlf3wLeUD-lAdBS4yK2o8_nLoqXL2Y
+        refresh_token:
+          type: string
+          title: Refresh Token
+          description: Token used to obtain a new access token when the current one expires.
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiODAiLCJ1dWlkIjoiMjA0ZTdjNmUtYzZiNS00MjAwLWFlNDUtMjBhOWY3N2ZiYmNlIiwiZXhwIjoxNzIyNDU5MTE0LCJhdWQiOiJodHRwczovL2N1cmFpaGVhbHRoLmNvbSJ9.UOcCFbNrWEJpPehTW3YrUtuvgcTeOe_E-NEgMFBYoh4
+        auth_url:
+          type: string
+          title: Auth Url
+          description: An authentication url that can be used to login directly to our app.
+          examples:
+          - https://chat.curaihealth.com/onboarding/affiliated-welcome?access_token={access_token}&refresh_token={refresh_token}
+      type: object
+      required:
+      - access_token
+      - refresh_token
+      title: RegisterPatientOutput
   securitySchemes:
     APIKeyHeader:
       type: apiKey
